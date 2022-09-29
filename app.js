@@ -13,6 +13,8 @@ require('dotenv').config()
 
 // Build the App
 const app = express()
+var cors = require('cors');
+app.use(cors());
 
 // View Engine (Handlebars)
 app.set('views', path.join(__dirname, 'views'))
@@ -49,7 +51,7 @@ app.use('/results', require('./controllers/results.js'))
 
 // Catch 404 and forward to error handler
 app.use((req, res, next) => {
-  next(createError(404))
+  res.send(createError(404))
 })
 
 // Error Handler
